@@ -5,7 +5,7 @@ date: "2026-10-14"
 output: html_document
 ---
 
-## Part A _ Arithmetic Operations
+## Part A - Arithmetic Operations
 ```{r}
 
 # TODO: Store 17 in a variable called a, and 5 in a variable called b
