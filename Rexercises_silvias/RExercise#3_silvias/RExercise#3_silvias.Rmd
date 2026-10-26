@@ -1,5 +1,5 @@
 ---
-title: 'Exercise #3'
+title: 'R Lab: Data Structures - Vectors and Lists'
 author: "Leah Rose Silvias"
 date: "2026-10-15"
 output: html_document
@@ -13,12 +13,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 # TODO: Create a numeric vector called scores containing: 88, 92, 79, 95, 84
-# Then create a character vector called subjects containing:
-# "Math", "Science", "English", "History", "PE"
-
 scores <- c(88, 92, 79, 95, 84)
+
+# Then create a character vector called subjects containing:
 subjects <- c("Math","Science", "English", "History", "PE")
-        
+
+# "Math", "Science", "English", "History", "PE
 scores
 subjects
 ```
@@ -37,25 +37,36 @@ seq(0, 1, length.out = 5 )
 
 ```{r}
 # TODO: Use rep() to create a vector that repeats the value "A" 4 times
+rep("A", times = 4)
+
 # TODO: Use rep() with the "each" argument to turn c("A", "B") into
 # "A" "A" "B" "B" (each element repeated twice, in order)
+rep(c("A", "B"), each = 2)
+
 # TODO: Use rep() with the "times" argument to turn c("A", "B") into
 # "A" "B" "A" "B" (the whole sequence repeated twice)
-
-rep("A", times = 4)
-rep(c("A", "B"), each = 2)
 rep(c("A", "B"), times = 2)
 ```
 
-**Question #1:Set up a vector named age, consisting of 15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8.**
+**Question #1:**
 
-**a.How many data points?**
+- Set up a vector named age, consisting of 15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8.
 
-**b. Find the reciprocal of age?**
+- a\. How many data points?
 
-**c. Assign also new_age <- c(age, 0, age). What happens to new_age?**
+  There are **34** data points in `age`.
 
-**d. Find the minimum and the maximum value of age.**
+- b\. Find the reciprocal of age?
+
+  The reciprocal of age is 1/age.
+
+- c\. Assign also new_age \<- c(age, 0, age). What happens to new_age?
+
+  `new_age` joins `age` twice with 0 between them, making length 69.
+
+- d\. Find the minimum and the maximum value of age.
+
+  The minimum value is 8 and the maximum value is 57.
 
 ```{r}
 age <- c(15, 28, 32, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 12, 42, 53, 41, 51, 35, 24, 33, 8)
@@ -68,20 +79,31 @@ min(age)
 max(age)
 ```
 
-**Question #2: rep(c("A","B"), each = 2) and rep(c("A","B"), times = 2) both produce a vector of length 4, but with different element orders. Explain in your own words the difference between each and times.**
+**Question #2:**
 
-The argument each repeats every individual element sequentially before moving to the next, while the argument times repeats the entire vector as a whole sequence multiple times.
+- rep(c("A","B"), each = 2) and rep(c("A","B"), times = 2) both - - produce a vector of length 4, but with different element orders.
 
-**Question #3: Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5). What does each argument (by vs length.out) control, and when would you use one over the other in a real analysis?**
+- Explain in your own words the difference between each and times.
 
-The by argument specifies the step size between numbers when the exact increment is required, while length.out specifies total number of elements desired when dividing an interval into equal intervals. 
+The `each` argument repeat every single item one by one before moving next, while `times` argument repeats the whole vector together multiple times.
+
+**Question #3:**
+
+- Compare seq(1, 20, by = 2) with seq(1, 20, length.out = 5). What does each argument (by vs length.out) control, and when would you use one over the other in a real analysis?
+
+The `by` argument sets the step size between numbers when you know the jump you want, while `length.out` sets the total count of numbers you want to split a range evenly.
 
 **Question #4:**
 
-**a Generate a sequence for 20 to 60. Name the vector as vec_num**
-**b. Get the mean for vec_num.**
-**c. Get the sum for vec_num.**
-**d. How many data points are there in vec_num?**
+- a\. Generate a sequence for 20 to 60. Name the vector as vec_num.
+
+- b\. Get the mean for vec_num.
+
+- c\. Get the sum for vec_num.
+
+- d\. How many data points are there in vec_num?
+
+  `length(vec_num)` gives 41 data points.
 
 ```{r}
 vec_num <- seq(20, 60) 
@@ -99,11 +121,12 @@ grades <- c(88, 92, 79, 95, 84)
 names(grades) <- c("Math", "Science", "English", "History", "PE")
 
 # TODO: Access the 3rd element of grades using positional indexing
-# TODO: Access the 1st and 4th element of grades using positional indexing
-# TODO: Access "Science" and "PE" together using their names
-
 grades[3]
+
+# TODO: Access the 1st and 4th element of grades using positional indexing
 grades[c(1, 4)]
+
+# TODO: Access "Science" and "PE" together using their names
 grades[c("Science", "PE")]
 
 ```
@@ -122,31 +145,30 @@ grades[-c(1, 4)]
 grades[grades >= 85]
 ```
 
-**Question #5: Negative indexing (grades[-1]) removes an element, while logical indexing (grades[grades >= 85]) filters by a condition.**
-**Describe a real situation where you would need negative indexing, and a different situation where logical indexing would be the better tool.**
+**Question #5:**
 
-Negative indexing is useful when cropping out the random stranger standing on the edge of your shot, while logical indexing is better when gathering data points meeting criteria like scores passing standard.
+- Negative indexing (grades[-1]) removes an element, while logical indexing (grades[grades \>= 85]) filters by a condition.
 
-**Question #6:What happens if you run grades[10] (an index that doesn’t exist)? Run it, observe the result, and explain why R responds this way instead of throwing an error.**
+- Describe a real situation where you would need negative indexing, and a different situation where logical indexing would be the better tool.
+
+Negative indexing helps drop unwanted items from the edges, while logical indexing picks out items that fit a specific rule, like passing scores.
+
+- What happens if you run grades[10] (an index that doesn’t exist)? Run it, observe the result, and explain why R responds this way instead of throwing an error.
+
 ```{r}
 grades[10]
+
 ```
 
-When accessing an index that does not exist, R returns NA rather than throwing an error because it treats out-of-bounds positions as missing data rather than a fatal program failure.
+When you pick a position that does not exist, R gives `NA` instead of an error because it views missing spots as missing data rather than a broken code.
 
+**Question #7:**
 
-
-**Question #7: Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.**
+- Print a vector with the integers between 1 and 100 that are not divisible by 3, 5 and 7 using filter option.
 
 ```{r}
 Filter(function(i) { all(i %% c(3,5,7) != 0) }, seq(100))
-
 ```
-
-[1]  1  2  4  8 11 13 16 17 19 22 23 26
-[13] 29 31 32 34 37 38 41 43 44 46 47 52
-[25] 53 58 59 61 62 64 67 68 71 73 74 76
-[37] 79 82 83 86 88 89 92 94 97
 
 ## Part C - Vector Operations and append()
 
@@ -155,10 +177,9 @@ x <- c(1, 2, 3, 4)
 y <- c(10, 20, 30, 40)
 
 # TODO: Add x and y element-wise, and print the result
+x + y
 
 # TODO: Multiply every element of x by 2
-
-x + y
 x * 2
 ```
 
@@ -176,24 +197,26 @@ z + short
 fruits <- c("apple", "banana", "cherry")
 
 # TODO: Use append() to add "date" to the end of fruits
+fruits <- append(fruits, "date")
+fruits
 
 # TODO: Use append() with the "after" argument to insert "kiwi" between
 # "apple" and "banana" (i.e., after position 1)
-
-fruits <- append(fruits, "date")
-fruits
 fruits <- append(fruits, "kiwi", after = 1)
 fruits
 ```
 
 **Question #8:**
-**In the vectors-recycling chunk, z has 6 elements and short has only 2. R still produced an answer instead of an error.**
-**Explain, in your own words, what R’s “recycling rule” did to short to make the addition work.**
 
-R repeats the 2-element vector 3 times end-to-end to make it 6 elements, then adds them together position by position. Since 6 divides evenly by 2, R completes the addition smoothly without warning.
+- In the vectors-recycling chunk, z has 6 elements and short has only 2. R still produced an answer instead of an error.
 
-**Question #9: Now try adding z (length 6) to c(1, 0, 1) (length 3) instead. Does it work cleanly?**
-**Explain, in your own words, what R’s “recycling rule” did to short to make the addition work.**
+- Explain, in your own words, what R’s “recycling rule” did to short to make the addition work.
+
+R repeats the 2-item vector 3 times to make it 6 items, then adds them up position by position. Since 6 divides evenly by 2, R does the math smoothly without any warning.
+
+**Question #9:** Now try adding z (length 6) to c(1, 0, 1) (length 3) instead. Does it work cleanly?
+
+- Then try adding `z` to `c(1, 0, 1, 1)` (length 4). Compare the warning (or lack of one) in each case, and explain what condition determines whether R recycles silently versus with a warning.
 
 ```{r}
 z + c(1, 0, 1)
@@ -201,7 +224,7 @@ z + c(1, 0, 1)
 z + c(1, 0, 1, 1)
 ```
 
-R recycles silently when the length of the longer vector is an exact multiple of the shorter vector's length, but triggers a warning if it is not an exact multiple.
+R automatically repeats the shorter vector if the longer one is a multiple of its size, but shows a warning if it doesn't fit evenly.
 
 ## Part D - Lists: Creating and Subsetting
 
@@ -248,19 +271,24 @@ student$name
 student[["grades"]][2]
 ```
 
-**Question #10: student["grades"] and student[["grades"]] look similar but return objects of different classes.**
-**Run class() on each and explain the difference in what single-bracket [ ] versus double-bracket [[ ]] return from a list.**
+**Question #10:**
+
+- student["grades"] and student[["grades"]] look similar but return objects of different classes.
+
+- Run class() on each and explain the difference in what single-bracket [ ] versus double-bracket [[ ]] return from a list.
 
 ```{r}
 class(student["grades"])
 class(student[["grades"]])
 ```
 
-Single brackets [ ] slice a sub-list returning class list, whereas double brackets [[ ]] extract the raw element directly returning class numeric.
+Single brackets `[ ]` give back a smaller list, while double brackets `[[ ]]` pull out the actual number directly.
 
-**Question #11: Why do you think R makes a distinction between [ ] and [[ ]] for lists, but a vector only needs [ ]? Think about what a list can contain that a vector cannot.**
+**Question #11:**
 
-Lists can hold heterogeneous data types across different elements, making double brackets necessary to extract individual underlying data structures without preserving list wrappers.
+- Why do you think R makes a distinction between [ ] and [[ ]] for lists, but a vector only needs [ ]? Think about what a list can contain that a vector cannot.
+
+Lists can hold different data types inside them, so double brackets is needed to get the real data without keeping the extra list container.
 
 ## Part E - Critical Thinking Challenge
 
@@ -289,16 +317,18 @@ inventory$in_stock <- append(inventory$in_stock, TRUE)
 inventory
 ```
 
-**Question #12: In challenge-1, you combined logical indexing on one vector (in_stock) to filter a different vector (item) inside the same list. Explain, step by step, why inventory$item[inventory$in_stock] works even though item and in_stock are stored as separate elements of the list.**
+**Question #12:**
 
-R reads the in_stock vector as a series of TRUE and FALSE values and uses them to select only the matching items from the item vector at the exact same positions.
+- In challenge-1, you combined logical indexing on one vector (in_stock) to filter a different vector (item) inside the same list. Explain, step by step, why inventory\$$item[inventory$\$in_stock] works even though item and in_stock are stored as separate elements of the list.
 
-**Question #13: Suppose a classmate stores related data as three separate, unconnected vectors (item_names, item_prices, item_stock) instead of grouping them into one list like inventory. What risks or bugs could this create as the dataset grows or gets reordered? Argue for or against using a list (or, later, a data frame) instead of separate vectors.**
+R reads the `in_stock` vector as `TRUE` and `FALSE` values and use it to pick matching items in `item` vector at the same position.
 
-Unconnected vectors risk accidental size mismatch and index misalignment during modification, making grouped data structures like lists or data frames necessary to preserve data integrity.
+**Question #13:**
 
+- Suppose a classmate stores related data as three separate, unconnected vectors (item_names, item_prices, item_stock) instead of grouping them into one list like inventory. What risks or bugs could this create as the dataset grows or gets reordered? Argue for or against using a list (or, later, a data frame) instead of separate vectors.
 
-## Conclusion
+Separate vectors risks wrong sizes and index misalignments when updated, so using lists or data frames are needed to keep data correct.
+
+Conclusion
 
 **Vectors store elements of a single atomic type, whereas lists can contain mixed types and complex data structures. Vectors are ideal for mathematical operations and uniform data, while lists excel at organizing structured, multi-type datasets. Choosing between them depends on whether data homogeneity or structural flexibility is required.**
-
